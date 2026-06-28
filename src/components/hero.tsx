@@ -11,10 +11,10 @@ export default function Hero(){
             </main>
             <footer>
                 <div className="float-right border text-foreground-muted p-md">
-                    <ul className="text-sm m-xs">
+                    <ul className="text-xs">
                         <li>System Status</li>
                         <li className="flex justify-between gap-xs"><p>Uptime:</p> <span className="text-foreground">99.99%</span></li>
-                        <li className="flex justify-between gap-sm"><p>Latency:</p> <span className="text-foreground">10ms</span></li>
+                        <li className="flex justify-between gap-xs"><p>Latency:</p> <span className="text-foreground">10ms</span></li>
                         <li></li>
                     </ul>
                 </div>
