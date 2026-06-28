@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  /* === COLORS === */
+  --color-background:        #131313;
+  --color-foreground:        #ffffff;
+  --color-foreground-muted:  #6b6b6b;   /* labels, hints, dimmed text */
+  --color-surface:           #1a1a1a;   /* slightly lighter than bg, for panels */
+  --color-border:            #2e2e2e;   /* subtle borders */
+  --color-border-strong:     #ffffff;   /* high-contrast borders (active, CTA) */
+
+  /* === SPACING (base-4 scale) === */
+  --spacing-xs:   0.25rem;  /*  4px */
+  --spacing-sm:   0.5rem;   /*  8px */
+  --spacing-md:   1rem;     /* 16px */
+  --spacing-lg:   1.5rem;   /* 24px */
+  --spacing-xl:   2rem;     /* 32px */
+  --spacing-2xl:  3rem;     /* 48px */
+  --spacing-3xl:  4rem;     /* 64px */
+  --spacing-4xl:  6rem;     /* 96px */
+
+  /* === BORDER WIDTHS === */
+  --border-width-thin:  1px;
+  --border-width-thick: 2px;
+
+  /* === TYPOGRAPHY === */
+  --font-sans: "Space Grotesk", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
