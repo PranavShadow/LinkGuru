@@ -1,6 +1,6 @@
 export default function Registration() {
     return (
-        <div className="flex flex-col h-full ml-4xl px-xl py-xl">
+        <div className="flex flex-col h-full ml-4xl px-4xl py-4xl">
             <header>
                 <h1 className="text-xl font-bold tracking-widest">LinkGuru</h1>
             </header>
@@ -10,7 +10,7 @@ export default function Registration() {
                     {/* Email */}
                     <div className="flex flex-col">
                         <label htmlFor="email" className="text-foreground-muted text-xs font-bold">Email Address</label>
-                        <input id="email" type="email" className="border border-foreground-muted p-2 align-middle outline-0" placeholder="letsgo@gmail.com" />
+                        <input id="email" type="email" className="placeholder:text-xs border border-foreground-muted p-2 align-middle outline-0" placeholder="letsgo@gmail.com" />
                     </div>
                     {/* Password */}
                     <div className="flex flex-col">
@@ -18,7 +18,7 @@ export default function Registration() {
                             <label htmlFor="password" className="text-foreground-muted text-xs font-bold">Password</label>
                             <span className="text-foreground-muted text-xs font-bold hover:text-foreground cursor-pointer">Reset</span>
                         </div>
-                        <input type="password" placeholder="••••••••••" className="border border-foreground-muted p-2 align-middle outline-0" />
+                        <input type="password" placeholder="••••••••••" className="placeholder:text-xs border border-foreground-muted p-2 align-middle outline-0" />
                     </div>
                     {/* Button */}
                     <button type="submit" className="border border-foreground p-2 align-middle text-foreground cursor-pointer hover:bg-foreground-muted hover:text-background hover:font-bold hover:border-background">Get Set Go</button>
