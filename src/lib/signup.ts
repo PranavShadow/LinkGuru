@@ -1,4 +1,5 @@
-import { error } from "console";
+// this page is solely for registering new users by credentials
+
 import { supabase } from "./supabase";
 import bcrypt from "bcryptjs";
 

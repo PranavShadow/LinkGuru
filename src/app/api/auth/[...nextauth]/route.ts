@@ -1,3 +1,5 @@
+// this page is solely for authentication of users signed in by google or by credentials provider
+
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
@@ -11,6 +13,7 @@ declare module "next-auth" {
       id: string
       name?: string | null
       email?: string | null
+      image?: string | null
     }
   }
 }
