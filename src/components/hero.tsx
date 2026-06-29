@@ -1,4 +1,12 @@
-export default function Hero(){
+import { supabase } from "../lib/supabase";
+
+export default async function Hero(){
+    const { count } = await supabase
+    .from("users")
+    .select("*", {
+        count: "exact",
+        head: true,
+    });
     return(
         <div className="flex flex-col h-full px-4xl py-4xl">
             <header>
@@ -13,8 +21,8 @@ export default function Hero(){
                 <div className="float-right border text-foreground-muted p-md">
                     <ul className="text-xs">
                         <li>System Status</li>
-                        <li className="flex justify-between gap-xs"><p>Uptime:</p> <span className="text-foreground">99.99%</span></li>
-                        <li className="flex justify-between gap-xs"><p>Latency:</p> <span className="text-foreground">10ms</span></li>
+                        <li className="flex justify-between gap-3xl"><p>Active Users:</p> <span className="text-foreground">{count} users</span></li>
+                        <li className="flex justify-between gap-3xl"><p>Latency:</p> <span className="text-foreground">10ms</span></li>
                         <li></li>
                     </ul>
                 </div>
