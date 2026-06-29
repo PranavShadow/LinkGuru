@@ -36,7 +36,7 @@ export default function Registration() {
     }
 
     return (
-        <div className="flex flex-col h-full ml-4xl px-4xl py-4xl">
+        <div className="flex flex-col h-full px-md py-lg md:px-xl md:py-2xl lg:px-4xl lg:py-4xl">
             <header>
                 <h1 className="text-xl font-bold tracking-widest">LinkGuru</h1>
             </header>
@@ -48,12 +48,12 @@ export default function Registration() {
                     {/* Name */}
                     {!isLogin && (<div className="flex flex-col">
                         <label htmlFor="name" className="text-foreground-muted text-xs font-bold">Name</label>
-                        <input id="name" type="name" value={name} onChange={e => setName(e.target.value)} className="placeholder:text-xs border border-foreground-muted p-2 align-middle outline-0" placeholder="Vrinda Gupta" required/>
+                        <input id="name" type="name" value={name} onChange={e => setName(e.target.value)} className="w-full placeholder:text-xs border border-foreground-muted p-2 align-middle outline-0" placeholder="Vrinda Gupta" required/>
                     </div>)}
                     {/* Email */}
                     <div className="flex flex-col">
                         <label htmlFor="email" className="text-foreground-muted text-xs font-bold">Email Address</label>
-                        <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} className="placeholder:text-xs border border-foreground-muted p-2 align-middle outline-0" placeholder="letsgo@gmail.com" required/>
+                        <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full placeholder:text-xs border border-foreground-muted p-2 align-middle outline-0" placeholder="letsgo@gmail.com" required/>
                     </div>
                     {/* Password */}
                     <div className="flex flex-col">
@@ -61,19 +61,19 @@ export default function Registration() {
                             <label htmlFor="password" className="text-foreground-muted text-xs font-bold">Password</label>
                             {isLogin && (<span className="text-foreground-muted text-xs font-bold hover:text-foreground cursor-pointer">Reset</span>)}
                         </div>
-                        <input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••••" className="placeholder:text-xs border border-foreground-muted p-2 align-middle outline-0" required />
+                        <input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••••" className="w-full placeholder:text-xs border border-foreground-muted p-2 align-middle outline-0" required />
                     </div>
                     {/* Confirm Password */}
                     {!isLogin && (<div className="flex flex-col">
                         <label htmlFor="confirm" className="text-foreground-muted text-xs font-bold">Confirm Password</label>
-                        <input id="confirm" type="password" value={confirm} onChange={e => setConfirm(e.target.value)} placeholder="••••••••••" className="placeholder:text-xs border border-foreground-muted p-2 align-middle outline-0" required/>
+                        <input id="confirm" type="password" value={confirm} onChange={e => setConfirm(e.target.value)} placeholder="••••••••••" className="w-full placeholder:text-xs border border-foreground-muted p-2 align-middle outline-0" required/>
                     </div>)}
                     {/* Error Message */}
                     {error && <p className="text-red-500 text-xs">{error}</p>}
                     {/* Button */}
-                    <button type="submit" className="border border-foreground p-2 align-middle text-foreground cursor-pointer hover:bg-foreground-muted hover:text-background hover:font-bold hover:border-background">{isLogin? "Get Set Go" : "Initialize"}</button>
+                    <button type="submit" className="w-full border border-foreground p-2 align-middle text-foreground cursor-pointer hover:bg-foreground-muted hover:text-background hover:font-bold hover:border-background">{isLogin? "Get Set Go" : "Initialize"}</button>
                     {/* Google */}
-                    <button type="button" onClick={()=> signIn("google", {callbackUrl: "/dashboard"})} className="border border-foreground-muted p-2 text-foreground-muted cursor-pointer hover:border-foreground hover:text-foreground">Continue with Google</button>
+                    <button type="button" onClick={()=> signIn("google", {callbackUrl: "/dashboard"})} className="w-full border border-foreground-muted p-2 text-foreground-muted cursor-pointer hover:border-foreground hover:text-foreground">Continue with Google</button>
                 </form>
 
                 <hr className="text-foreground-muted" />
