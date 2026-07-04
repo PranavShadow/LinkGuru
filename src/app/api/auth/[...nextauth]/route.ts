@@ -1,4 +1,4 @@
-// this page is solely for authentication of users signed in by google or by credentials provider
+// this page is solely for authentication of users signed in by google or by credentials provider and routing them to there places
 
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
