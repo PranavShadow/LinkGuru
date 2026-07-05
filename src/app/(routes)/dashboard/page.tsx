@@ -45,10 +45,10 @@ export default function Dashboard() {
       </header>
 
       {/* Main */}
-      <main className="flex-1 overflow-y-auto px-xl py-xl">
+      <main className="flex-1 overflow-y-auto px-lg py-lg">
 
         {/* Add link input */}
-        <div className="flex items-center gap-sm border border-border px-md py-sm mb-xl mx-auto w-[700px]">
+        <div className="flex items-center gap-sm border border-border px-md py-sm mb-lg mx-auto w-[700px]">
           <span className="text-foreground-muted text-xs">⌘</span>
           <input
             type="text"
@@ -76,7 +76,7 @@ export default function Dashboard() {
         {loading ? (
           <p className="text-foreground-muted text-xs text-center">Loading...</p>
         ) : (
-          <div className="grid grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-px border border-border">
+          <div className="grid grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-px border border-border">
             {[...APPS]
               .sort((a, b) => {
                 const aActive = activeApps.has(a.id) ? 0 : 1
@@ -90,7 +90,7 @@ export default function Dashboard() {
                   <Link
                     key={app.id}
                     href={`/dashboard/${app.id}`}
-                    className="flex flex-col items-center justify-center gap-xs py-lg px-sm border border-border hover:bg-surface transition-colors group"
+                    className="flex flex-col items-center justify-center gap-xs py-md px-sm border border-border hover:bg-surface transition-colors group"
                   >
                     <Icon
                       size={20}
@@ -115,15 +115,22 @@ export default function Dashboard() {
       </main>
 
       {/* Footer */}
-      <footer className="flex items-center justify-between px-xl py-sm border-t border-border">
-        <span className="text-[10px] text-foreground-muted tracking-widest"><a target="_blank" className="hover:text-foreground" href="https://github.com/PranavShadow/LinkGuru">LinkGuru</a></span>
-        <div className="flex gap-md">
-          <span className="text-[10px] text-foreground-muted hover:text-foreground cursor-pointer">Privacy</span>
-          <span className="text-[10px] text-foreground-muted hover:text-foreground cursor-pointer">Terms</span>
-          <span className="text-[10px] text-foreground-muted hover:text-foreground cursor-pointer">Support</span>
-        </div>
-        <span className="text-[10px] text-foreground-muted">View more such projects at <a target="_blank" href="https://github.com/PranavShadow"><span className="hover:text-foreground">github.com/PranavShadow</span></a></span>
-      </footer>
+      <footer className="relative flex items-center justify-between px-xl py-sm border-t border-border">
+  <span className="text-[10px] text-foreground-muted tracking-widest">
+    <a target="_blank" className="hover:text-foreground" href="https://github.com/PranavShadow/LinkGuru">LinkGuru</a>
+  </span>
+
+  {/* Absolutely centered */}
+  <div className="absolute left-1/2 -translate-x-1/2 flex gap-md">
+    <span className="text-[10px] text-foreground-muted hover:text-foreground cursor-pointer">Privacy</span>
+    <span className="text-[10px] text-foreground-muted hover:text-foreground cursor-pointer">Terms</span>
+    <span className="text-[10px] text-foreground-muted hover:text-foreground cursor-pointer">Support</span>
+  </div>
+
+  <span className="text-[10px] text-foreground-muted">
+    View more such projects at <a target="_blank" href="https://github.com/PranavShadow"><span className="hover:text-foreground">github.com/PranavShadow</span></a>
+  </span>
+</footer>
 
     </div>
   )

@@ -166,22 +166,22 @@ export default function AppLinksPage() {
       </main>
 
       {/* Footer */}
-      <footer className="flex items-center justify-between px-xl py-sm border-t border-border">
-        <span className="text-[10px] text-foreground-muted tracking-widest">
-          <a target="_blank" className="hover:text-foreground" href="https://github.com/PranavShadow/LinkGuru">LinkGuru</a>
-        </span>
-        <div className="flex gap-md">
-          <span className="text-[10px] text-foreground-muted hover:text-foreground cursor-pointer">Privacy</span>
-          <span className="text-[10px] text-foreground-muted hover:text-foreground cursor-pointer">Terms</span>
-          <span className="text-[10px] text-foreground-muted hover:text-foreground cursor-pointer">Support</span>
-        </div>
-        <span className="text-[10px] text-foreground-muted">
-          View more such projects at{" "}
-          <a target="_blank" href="https://github.com/PranavShadow">
-            <span className="hover:text-foreground">github.com/PranavShadow</span>
-          </a>
-        </span>
-      </footer>
+      <footer className="relative flex items-center justify-between px-xl py-sm border-t border-border">
+  <span className="text-[10px] text-foreground-muted tracking-widest">
+    <a target="_blank" className="hover:text-foreground" href="https://github.com/PranavShadow/LinkGuru">LinkGuru</a>
+  </span>
+
+  {/* Absolutely centered */}
+  <div className="absolute left-1/2 -translate-x-1/2 flex gap-md">
+    <span className="text-[10px] text-foreground-muted hover:text-foreground cursor-pointer">Privacy</span>
+    <span className="text-[10px] text-foreground-muted hover:text-foreground cursor-pointer">Terms</span>
+    <span className="text-[10px] text-foreground-muted hover:text-foreground cursor-pointer">Support</span>
+  </div>
+
+  <span className="text-[10px] text-foreground-muted">
+    View more such projects at <a target="_blank" href="https://github.com/PranavShadow"><span className="hover:text-foreground">github.com/PranavShadow</span></a>
+  </span>
+</footer>
 
     </div>
   )
