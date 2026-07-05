@@ -140,14 +140,14 @@ export default function AppLinksPage() {
               <li key={link.id} className="flex items-center gap-md py-md border-b border-border hover:bg-surface transition-colors px-sm group">
                 <div className="w-10 h-10 border border-border flex items-center justify-center shrink-0">
                   {link.favicon ? (
-                    <img src={link.favicon ?? link.image} alt="" width={20} height={20} className="object-contain" />
+                    <img src={link.image ?? link.favicon} alt="" width={25} height={25} className="object-contain" />
                   ) : (
                     <span className="text-foreground-muted text-xs">?</span>
                   )}
                 </div>
                 <a href={link.url} target="_blank" rel="noopener noreferrer" className="flex flex-col gap-xs flex-1 min-w-0">
                   <span className="text-sm font-semibold truncate group-hover:text-foreground transition-colors">
-                    {link.title ?? link.url}
+                    {link.title ?? link.description ?? link.url}
                   </span>
                   <span className="text-xs text-foreground-muted truncate">
                     {link.url}
