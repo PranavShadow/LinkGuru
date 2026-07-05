@@ -60,3 +60,25 @@ export async function GET(req: Request) {
 
     return Response.json({links:data})
 }
+
+export async function DELETE(req: Request) {
+  const session = await getServerSession(authOptions)
+  if (!session?.user) {
+    return Response.json({ error: "Unauthorized" }, { status: 401 })
+  }
+
+  const { searchParams } = new URL(req.url)
+  const id = searchParams.get("id")
+
+  if (!id) return Response.json({ error: "ID required" }, { status: 400 })
+
+  const { error } = await supabase
+    .from("links")
+    .delete()
+    .eq("id", id)
+    .eq("user_id", session.user.id)
+
+
+  if (error) return Response.json({ error: error.message }, { status: 500 })
+  return Response.json({ success: true })
+}

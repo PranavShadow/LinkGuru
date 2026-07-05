@@ -48,7 +48,7 @@ export default function Dashboard() {
       <main className="flex-1 overflow-y-auto px-xl py-xl">
 
         {/* Add link input */}
-        <div className="flex items-center gap-sm border border-border px-md py-sm mb-xl mx-auto">
+        <div className="flex items-center gap-sm border border-border px-md py-sm mb-xl mx-auto w-[700px]">
           <span className="text-foreground-muted text-xs">⌘</span>
           <input
             type="text"

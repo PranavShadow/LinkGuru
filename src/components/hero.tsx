@@ -7,7 +7,7 @@ export default async function Hero(){
     return(
         <div className="flex flex-col h-full px-4xl py-4xl">
             <header>
-                <p className="text-xs text-right text-foreground-muted">Created by <a href="https://github.com/PranavShadow" className="hover:text-foreground">PranavShadow</a></p>
+                <p className="text-xs text-right text-foreground-muted">Created by <a target="_blank" href="https://github.com/PranavShadow" className="hover:text-foreground">PranavShadow</a></p>
             </header>
             <main className="flex flex-col flex-1 gap-lg justify-center">
                 <h1 className="text-6xl uppercase font-extrabold w-[60%]">Architecture for the Chaotic web.</h1>

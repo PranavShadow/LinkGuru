@@ -5,10 +5,11 @@ import {
   SiJira, SiGoogledrive, SiGoogledocs, SiGooglesheets, SiGoogleslides,
   SiGmail, SiGooglemeet, SiGooglecalendar, SiDiscord,
   SiTelegram, SiWhatsapp, SiZoom, SiSpotify, SiSoundcloud,
-  SiApplemusic, SiMedium, SiSubstack, SiDropbox, SiCodeblocks, SiCodechef, SiLeetcode, SiLinktree, SiClaude, SiYcombinator, SiHackerearth, SiHostinger, SiIndeed, SiHackerrank, SiCodeforces, SiUpwork, SiWellfound, SiKaggle, SiPerplexity, SiSteam, SiUdemy, SiCoursera, SiGodaddy
+  SiApplemusic, SiMedium, SiSubstack, SiDropbox, SiCodeblocks, SiCodechef, SiLeetcode, SiLinktree, SiClaude, SiYcombinator, SiHackerearth, SiHostinger, SiIndeed, SiHackerrank, SiCodeforces, SiUpwork, SiWellfound, SiKaggle, SiPerplexity, SiSteam, SiUdemy, SiCoursera, SiGodaddy,
 } from "react-icons/si"
 import { ComponentType } from "react"
 import {MeeshoIcon, PrimeVideoIcon, ChatGPTIcon, CodePenIcon, HotstarIcon, SlackIcon, LinkedInIcon, } from "../components/icons/icons"
+import { TbWorld } from "react-icons/tb"
 
 export interface App {
   id: string
@@ -144,4 +145,10 @@ export const APPS: App[] = [
   // Gaming
   // =========================
   { id: "steam", label: "Steam", icon: SiSteam, color: "#1B2838" },
+
+  // =========================
+  // Others
+  // =========================
+
+  { id: "other", label: "Other", icon: TbWorld, color: "#ffffff" },
 ]
