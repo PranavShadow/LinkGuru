@@ -6,7 +6,6 @@
 ![Next.js](https://img.shields.io/badge/Next.js-16-white?style=flat-square&labelColor=131313)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-white?style=flat-square&labelColor=131313)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-white?style=flat-square&labelColor=131313)
-![Space Grotesk](https://img.shields.io/badge/Font-Space_Grotesk-white?style=flat-square&labelColor=131313)
 ![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-white?style=flat-square&labelColor=131313)
 ![NextAuth.js](https://img.shields.io/badge/Auth-NextAuth.js-white?style=flat-square&labelColor=131313)
 ![Google OAuth](https://img.shields.io/badge/OAuth-Google-white?style=flat-square&labelColor=131313)
