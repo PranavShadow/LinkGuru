@@ -48,6 +48,27 @@ LinkGuru is a tool that brings order to that chaos. Paste a URL — any URL — 
 | Metadata | Custom HTML scraper (node-html-parser) |
 
 ---
+## Project Metrics
+
+## Performance Metrics
+
+| Action | Endpoint | Request Time (ms) | Response Time (ms) | Estimated Latency (ms) |
+|---------|----------|------------------:|-------------------:|-----------------------:|
+| Page Load | `GET /api/auth/session` | 0.37 | 178 | 177.63 |
+| Login | `POST /api/auth/callback/credentials` | 0.15 | 900 | 899.85 |
+| Paste Link | `POST /api/links` | 0.17 | 950 | 949.83 |
+| Delete Link | `DELETE /api/links?id=...` | 0.15 | 800 | 799.85 |
+
+---
+
+## Average Performance
+
+| Metric | Value |
+|--------|-------:|
+| **Average Request Time** | **0.21 ms** |
+| **Average Response Time** | **707 ms** |
+| **Average Latency** | **706.79 ms** |
+---
 
 ## Getting Started
 
