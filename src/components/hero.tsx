@@ -33,7 +33,7 @@ export default async function Hero() {
                     <ul className="text-xs">
                         <li className="mb-xs">System Status</li>
                         <li className="flex justify-between gap-xl"><p>Active Users:</p><span className="text-foreground">{count || 0} user</span></li>
-                        <li className="flex justify-between gap-xl"><p>Latency:</p><span className="text-foreground">10ms</span></li>
+                        <li className="flex justify-between gap-xl"><p>Latency:</p><span className="text-foreground">706.79 ms</span></li>
                     </ul>
                 </div>
             </footer>
