@@ -89,7 +89,7 @@ const APP_PATTERNS: Record<string, RegExp> = {
     flipkart: /(?:^|\.)flipkart\.com/,
     meesho: /(?:^|\.)meesho\.com/,
     myntra: /(?:^|\.)myntra\.com/,
-    nykaa: /(?:^|\.)nykaa\.com/,
+    nykaa: /(?:^|\.)(?:nykaa|nykaafashion|nykaaman)\.com/,
     ajio: /(?:^|\.)ajio\.com/,
     ebay: /(?:^|\.)ebay\.com/,
 

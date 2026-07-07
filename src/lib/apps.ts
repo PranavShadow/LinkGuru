@@ -8,7 +8,7 @@ import {
   SiApplemusic, SiMedium, SiSubstack, SiDropbox, SiCodeblocks, SiCodechef, SiLeetcode, SiLinktree, SiClaude, SiYcombinator, SiHackerearth, SiHostinger, SiIndeed, SiHackerrank, SiCodeforces, SiUpwork, SiWellfound, SiKaggle, SiPerplexity, SiSteam, SiUdemy, SiCoursera, SiGodaddy, SiEbay, SiOnlyfans
 } from "react-icons/si"
 import { ComponentType } from "react"
-import {MeeshoIcon, PrimeVideoIcon, ChatGPTIcon, CodePenIcon, HotstarIcon, SlackIcon, LinkedInIcon, MyntraIcon, AmazonIcon, AjioIcon, } from "../components/icons/icons"
+import {MeeshoIcon, PrimeVideoIcon, ChatGPTIcon, CodePenIcon, HotstarIcon, SlackIcon, LinkedInIcon, MyntraIcon, AmazonIcon, AjioIcon, FlipkartIcon } from "../components/icons/icons"
 import { TbWorld } from "react-icons/tb"
 
 export interface App {
@@ -61,7 +61,8 @@ export const APPS: App[] = [
   { id: "amazon", label: "Amazon", icon: AmazonIcon, color: "#FF9900" },
   { id: "ebay", label: "eBay", icon: SiEbay, color: "#0064D2" },
   { id: "ajio", label: "AJIO", icon: AjioIcon, color: "#496379" },
-  // { id: "flipkart", label: "Flipkart", icon: FlipkartIcon, color: "#2874F0" },
+  // { id: "nykaa", label: "Nykaa", icon: NykaaIcon, color: "#E91E63" },
+  { id: "flipkart", label: "Flipkart", icon: FlipkartIcon, color: "#FFE51F" },
 
   // =========================
   // Productivity & Work
