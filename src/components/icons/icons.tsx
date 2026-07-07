@@ -124,3 +124,4 @@ export function AmazonIcon({ size = 20, color = "currentColor" }: { size?: numbe
 </svg>
   )
 }
+
