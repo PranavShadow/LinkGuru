@@ -134,7 +134,7 @@ export default function AppLinksPage() {
             </Link>
             <h2 className="text-2xl md:text-3xl font-bold capitalize">{appInfo?.label ?? appId}</h2>
           </div>
-          {/* ✅ show filtered count when searching */}
+          {/* show filtered count when searching */}
           <span className="text-xs text-foreground-muted">
             {input.trim() ? `${filteredLinks.length} of ${links.length}` : `Total: ${links.length}`}
           </span>
@@ -147,13 +147,13 @@ export default function AppLinksPage() {
             No links saved for {appInfo?.label ?? appId} yet. Paste one above.
           </p>
         ) : filteredLinks.length === 0 ? (
-          // ✅ no search results — prompt to add
+          // no search results — prompt to add
           <p className="text-foreground-muted text-xs">
             No results for "{input}" — press Enter to save this as a new link.
           </p>
         ) : (
           <ul className="flex flex-col">
-            {/* ✅ render filteredLinks not links */}
+            {/* render filteredLinks not links */}
             {filteredLinks.map(link => (
               <li key={link.id} className="flex items-center gap-md py-md border-b border-border hover:bg-surface transition-colors px-sm group">
                 <div className="w-10 h-10 border border-border flex items-center justify-center shrink-0">
@@ -173,7 +173,7 @@ export default function AppLinksPage() {
                 </a>
                 <button
                   onClick={() => handleDelete(link.id)}
-                  className="opacity-0 group-hover:opacity-100 transition-opacity text-foreground-muted hover:text-foreground text-xs px-sm py-xs border border-transparent hover:border-border shrink-0 cursor-pointer"
+                  className="opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity text-foreground-muted hover:text-foreground text-xs px-sm py-xs border border-transparent hover:border-border shrink-0 cursor-pointer"
                 >
                   ✕
                 </button>
