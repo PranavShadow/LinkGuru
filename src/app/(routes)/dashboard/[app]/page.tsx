@@ -27,7 +27,6 @@ export default function AppLinksPage() {
 
   const appInfo = APPS.find(a => a.id === appId)
 
-  // ✅ ADD THIS — derived filtered list
   const filteredLinks = links.filter(link => {
     if (!input.trim()) return true
     const q = input.toLowerCase()
@@ -129,7 +128,12 @@ export default function AppLinksPage() {
       <main className="flex-1 overflow-y-auto px-xl py-xl">
 
         <div className="flex items-baseline justify-between mb-xl border-b border-border pb-md">
-          <h2 className="text-4xl font-bold capitalize">{appInfo?.label ?? appId}</h2>
+          <div className="flex items-center gap-sm">
+            <Link href="/dashboard" className="text-foreground hover:text-foreground-muted transition-colors text-2xl">
+              ⬅ 
+            </Link>
+            <h2 className="text-2xl md:text-3xl font-bold capitalize">{appInfo?.label ?? appId}</h2>
+          </div>
           {/* ✅ show filtered count when searching */}
           <span className="text-xs text-foreground-muted">
             {input.trim() ? `${filteredLinks.length} of ${links.length}` : `Total: ${links.length}`}
