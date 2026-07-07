@@ -8,7 +8,7 @@ import {
   SiApplemusic, SiMedium, SiSubstack, SiDropbox, SiCodeblocks, SiCodechef, SiLeetcode, SiLinktree, SiClaude, SiYcombinator, SiHackerearth, SiHostinger, SiIndeed, SiHackerrank, SiCodeforces, SiUpwork, SiWellfound, SiKaggle, SiPerplexity, SiSteam, SiUdemy, SiCoursera, SiGodaddy,
 } from "react-icons/si"
 import { ComponentType } from "react"
-import {MeeshoIcon, PrimeVideoIcon, ChatGPTIcon, CodePenIcon, HotstarIcon, SlackIcon, LinkedInIcon, MyntraIcon, } from "../components/icons/icons"
+import {MeeshoIcon, PrimeVideoIcon, ChatGPTIcon, CodePenIcon, HotstarIcon, SlackIcon, LinkedInIcon, MyntraIcon, AmazonIcon, } from "../components/icons/icons"
 import { TbWorld } from "react-icons/tb"
 
 export interface App {
@@ -58,7 +58,7 @@ export const APPS: App[] = [
   // =========================
   { id: "meesho", label: "Meesho", icon: MeeshoIcon, color: "#F43397" },
   { id: "myntra", label: "Myntra", icon: MyntraIcon, color: "#F43397" },
-  // { id: "amazon", label: "Amazon", icon: AmazonIcon, color: "#FF9900" },
+  { id: "amazon", label: "Amazon", icon: AmazonIcon, color: "#FF9900" },
   // { id: "flipkart", label: "Flipkart", icon: FlipkartIcon, color: "#2874F0" },
 
   // =========================
