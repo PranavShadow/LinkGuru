@@ -34,7 +34,7 @@ export default function Dashboard() {
       {/* Header */}
       <header className="flex items-center justify-between px-md md:px-xl py-md border-b border-border">
         <h1 className="text-xl font-bold">LinkGuru</h1>
-        <button onClick={() => signOut({ callbackUrl: "/" })} className="text-xs text-foreground-muted hover:text-foreground transition-colors tracking-widest">
+        <button onClick={() => signOut({ callbackUrl: "/" })} className="text-xs text-foreground-muted hover:text-foreground transition-colors tracking-widest cursor-pointer">
           Log Out
         </button>
       </header>
