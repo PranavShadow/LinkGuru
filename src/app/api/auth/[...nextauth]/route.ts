@@ -33,7 +33,7 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null
 
-        const { data: user } = await supabase
+        const { data: user, error} = await supabase
           .from("users")
           .select("*")
           .eq("email", credentials.email)
@@ -70,7 +70,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       if (session.user) {
         // Fetch the actual Supabase user id using email
-        const { data: user } = await supabase
+        const { data: user, error } = await supabase
         .from("users")
         .select("id")
         .eq("email", token.email!)
