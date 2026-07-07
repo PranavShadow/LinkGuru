@@ -8,7 +8,7 @@ import {
   SiApplemusic, SiMedium, SiSubstack, SiDropbox, SiCodeblocks, SiCodechef, SiLeetcode, SiLinktree, SiClaude, SiYcombinator, SiHackerearth, SiHostinger, SiIndeed, SiHackerrank, SiCodeforces, SiUpwork, SiWellfound, SiKaggle, SiPerplexity, SiSteam, SiUdemy, SiCoursera, SiGodaddy, SiEbay, SiOnlyfans
 } from "react-icons/si"
 import { ComponentType } from "react"
-import {MeeshoIcon, PrimeVideoIcon, ChatGPTIcon, CodePenIcon, HotstarIcon, SlackIcon, LinkedInIcon, MyntraIcon, AmazonIcon, AjioIcon, FlipkartIcon } from "../components/icons/icons"
+import {MeeshoIcon, PrimeVideoIcon, ChatGPTIcon, CodePenIcon, HotstarIcon, SlackIcon, LinkedInIcon, MyntraIcon, AmazonIcon, AjioIcon, FlipkartIcon, OneDriveIcon, InternshalaIcon } from "../components/icons/icons"
 import { TbWorld } from "react-icons/tb"
 
 export interface App {
@@ -133,6 +133,7 @@ export const APPS: App[] = [
   { id: "indeed", label: "Indeed", icon: SiIndeed, color: "#003A9B" },
   { id: "upwork", label: "Upwork", icon: SiUpwork, color: "#6FDA44" },
   { id: "wellfound", label: "Wellfound", icon: SiWellfound, color: "#ffffff" },
+  { id: "internshala", label: "Internshala", icon: InternshalaIcon, color: "#00A5EC" },
 
   // =========================
   // Reading
@@ -144,6 +145,7 @@ export const APPS: App[] = [
   // Cloud Storage
   // =========================
   { id: "dropbox", label: "Dropbox", icon: SiDropbox, color: "#0061FF" },
+  { id: "onedrive", label: "OneDrive", icon: OneDriveIcon, color: "#0078D4" },
 
   // =========================
   // Gaming
