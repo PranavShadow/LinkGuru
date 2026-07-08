@@ -17,6 +17,7 @@ declare module "next-auth" {
     }
   }
 }
+const useSecureCookies = process.env.NODE_ENV === "production"
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -33,7 +34,7 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null
 
-        const { data: user, error} = await supabase
+        const { data: user, error } = await supabase
           .from("users")
           .select("*")
           .eq("email", credentials.email)
@@ -41,8 +42,35 @@ export const authOptions: NextAuthOptions = {
 
         if (!user) return null
 
+        if (!user.email_verified) return null
+
         const passwordMatch = await bcrypt.compare(credentials.password, user.password_hash)
         if (!passwordMatch) return null
+
+        return { id: user.id, email: user.email, name: user.name }
+      },
+    }),
+    CredentialsProvider({
+      id: "verify-token",
+      name: "verify-token",
+      credentials: { token: { label: "token", type: "text" } },
+      async authorize(credentials) {
+        if (!credentials?.token) return null
+
+        const { data: user } = await supabase
+          .from("users")
+          .select("*")
+          .eq("login_token", credentials.token)
+          .single()
+
+        if (!user) return null
+        if (new Date(user.login_token_expires) < new Date()) return null // expired
+
+        // one-time use — clear it immediately
+        await supabase
+          .from("users")
+          .update({ login_token: null, login_token_expires: null })
+          .eq("id", user.id)
 
         return { id: user.id, email: user.email, name: user.name }
       },
@@ -71,40 +99,40 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         // Fetch the actual Supabase user id using email
         const { data: user, error } = await supabase
-        .from("users")
-        .select("id")
-        .eq("email", token.email!)
-        .single()
+          .from("users")
+          .select("id")
+          .eq("email", token.email!)
+          .single()
 
         session.user.id = user?.id ?? token.sub!
-    }
+      }
       return session
     },
   },
   cookies: {
     pkceCodeVerifier: {
-      name: "next-auth.pkce.code_verifier",
+      name: useSecureCookies
+        ? "__Secure-next-auth.pkce.code_verifier"
+        : "next-auth.pkce.code_verifier",
       options: {
         httpOnly: true,
-        sameSite: "none",
+        sameSite: useSecureCookies ? "none" : "lax",
         path: "/",
-        secure: true,
+        secure: useSecureCookies,
       },
     },
     state: {
-      name: "next-auth.state",
+      name: useSecureCookies ? "__Secure-next-auth.state" : "next-auth.state",
       options: {
         httpOnly: true,
-        sameSite: "none",
+        sameSite: useSecureCookies ? "none" : "lax",
         path: "/",
-        secure: true,
+        secure: useSecureCookies,
       },
     },
   },
-  useSecureCookies: true,
-  pages: {
-    signIn: "/",
-  },
+  useSecureCookies,
+  pages: { signIn: "/" },
 }
 
 const handler = NextAuth(authOptions)
