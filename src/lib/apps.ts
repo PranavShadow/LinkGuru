@@ -151,11 +151,11 @@ export const APPS: App[] = [
   // Gaming
   // =========================
   { id: "steam", label: "Steam", icon: SiSteam, color: "#1B2838" },
+  { id: "onlyfans", label: "OnlyFans", icon: SiOnlyfans, color: "#00AEEF" },
 
   // =========================
   // Others
   // =========================
 
   { id: "other", label: "Other", icon: TbWorld, color: "#ffffff" },
-  { id: "onlyfans", label: "OnlyFans", icon: SiOnlyfans, color: "#00AEEF" },
 ]
