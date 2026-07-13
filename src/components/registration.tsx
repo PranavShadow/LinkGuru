@@ -115,7 +115,7 @@ export default function Registration() {
                     </span>
                 </p>
             </main>
-            <footer className="text-foreground-muted text-xs">V1.1</footer>
+            <footer className="text-foreground-muted text-xs">V1.3</footer>
         </div>
     )
 }
