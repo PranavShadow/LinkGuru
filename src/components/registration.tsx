@@ -14,11 +14,13 @@ export default function Registration() {
     const [error, setError] = useState("")
     const router = useRouter()
     const [verificationSent, setVerificationSent] = useState(false);
+    const [showReset, setShowReset] = useState(false)
+    const [resetEmail, setResetEmail] = useState("")
+    const [resetMsg, setResetMsg] = useState("")
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault()
         setError("")
-
         if (isLogin) {
             const res = await signIn("credentials", { email, password, redirect: false })
             if (res?.error) setError("Invalid email or Password")
@@ -27,24 +29,27 @@ export default function Registration() {
             if (password !== confirm) return setError("Passwords don't match")
             const res = await signUpUser(name, email, password)
             if (res.error) setError(res.error)
-            else {
-                setVerificationSent(true);
-                // await signIn("credentials", { email, password, redirect: false })
-                // router.push("/dashboard")
-            }
+            else setVerificationSent(true)
         }
     }
+
+    async function handleReset(e: React.FormEvent) {
+        e.preventDefault()
+        await fetch("/api/auth/reset", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: resetEmail }),
+        })
+        setResetMsg("If this email exists, a reset link has been sent.")
+    }
+
     useEffect(() => {
         const params = new URLSearchParams(window.location.search)
         const loginToken = params.get("login_token")
-
         if (loginToken) {
             signIn("verify-token", { token: loginToken, redirect: false }).then((res) => {
-                if (res?.ok) {
-                    router.push("/dashboard")
-                } else {
-                    setError("Verification link expired. Please log in.")
-                }
+                if (res?.ok) router.push("/dashboard")
+                else setError("Verification link expired. Please log in.")
             })
         }
     }, [])
@@ -54,59 +59,106 @@ export default function Registration() {
             <header>
                 <h1 className="text-lg md:text-xl font-bold tracking-widest">LinkGuru</h1>
             </header>
+
             <main className="flex flex-col flex-1 justify-center gap-md md:gap-lg">
-                {verificationSent ?
-                    (
-                        <div className="flex flex-col gap-md">
-                            <h1 className="text-4xl font-bold">Check your email</h1>
-                            <p className="text-sm text-foreground-muted">
-                                We sent a verification link to <span className="text-foreground">{email}</span>.
-                                Click it to activate your account.
-                            </p>
+
+                {/* ── View 1: Verification sent ── */}
+                {verificationSent ? (
+                    <div className="flex flex-col gap-md">
+                        <h1 className="text-4xl font-bold">Check your email</h1>
+                        <p className="text-sm text-foreground-muted">
+                            We sent a verification link to <span className="text-foreground">{email}</span>.
+                            Click it to activate your account.
+                        </p>
+                        <button
+                            onClick={() => { setVerificationSent(false); setIsLogin(true) }}
+                            className="w-full border border-foreground p-2 text-foreground hover:bg-foreground hover:text-background transition-colors"
+                        >
+                            Back to Login
+                        </button>
+                    </div>
+
+                ) : showReset ? (
+                    /* ── View 2: Reset password form ── */
+                    <div className="flex flex-col gap-md">
+                        <h1 className="text-3xl md:text-4xl font-bold">Reset Password</h1>
+                        <p className="text-sm text-foreground-muted">
+                            Enter your email and we'll send you a reset link.
+                        </p>
+                        <form className="flex flex-col gap-md" onSubmit={handleReset}>
+                            <div className="flex flex-col">
+                                <label className="text-foreground-muted text-xs font-bold">Email Address</label>
+                                <input
+                                    type="email"
+                                    value={resetEmail}
+                                    onChange={e => setResetEmail(e.target.value)}
+                                    placeholder="letsgo@gmail.com"
+                                    className="w-full placeholder:text-xs border border-foreground-muted p-2 outline-0 bg-transparent"
+                                    required
+                                />
+                            </div>
+                            {resetMsg && <p className="text-xs text-foreground-muted">{resetMsg}</p>}
+                            <button type="submit" className="w-full border border-foreground p-2 text-foreground hover:bg-foreground hover:text-background transition-colors">
+                                Send Reset Link
+                            </button>
                             <button
-                                onClick={() => { setVerificationSent(false); setIsLogin(true) }}
-                                className="w-full border border-foreground p-2 text-foreground hover:bg-foreground hover:text-background transition-colors"
+                                type="button"
+                                onClick={() => { setShowReset(false); setResetMsg("") }}
+                                className="w-full border border-foreground-muted p-2 text-foreground-muted hover:text-foreground transition-colors"
                             >
                                 Back to Login
                             </button>
-                        </div>
-                    ) : (
-                        <><h1 className="text-3xl md:text-4xl font-bold">
+                        </form>
+                    </div>
+
+                ) : (
+                    /* ── View 3: Login / Signup form ── */
+                    <>
+                        <h1 className="text-3xl md:text-4xl font-bold">
                             {isLogin ? "System Access" : "Request Allocation"}
                         </h1>
-                            <form className="flex flex-col gap-sm md:gap-md" onSubmit={handleSubmit}>
-                                {!isLogin && (
-                                    <div className="flex flex-col">
-                                        <label htmlFor="name" className="text-foreground-muted text-xs font-bold">Name</label>
-                                        <input id="name" type="text" value={name} onChange={e => setName(e.target.value)} className="w-full placeholder:text-xs border border-foreground-muted p-2 outline-0 bg-transparent" placeholder="Vrinda Gupta" required />
-                                    </div>
-                                )}
+                        <form className="flex flex-col gap-sm md:gap-md" onSubmit={handleSubmit}>
+                            {!isLogin && (
                                 <div className="flex flex-col">
-                                    <label htmlFor="email" className="text-foreground-muted text-xs font-bold">Email Address</label>
-                                    <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full placeholder:text-xs border border-foreground-muted p-2 outline-0 bg-transparent" placeholder="letsgo@gmail.com" required />
+                                    <label htmlFor="name" className="text-foreground-muted text-xs font-bold">Name</label>
+                                    <input id="name" type="text" value={name} onChange={e => setName(e.target.value)} className="w-full placeholder:text-xs border border-foreground-muted p-2 outline-0 bg-transparent" placeholder="Vrinda Gupta" required />
                                 </div>
+                            )}
+                            <div className="flex flex-col">
+                                <label htmlFor="email" className="text-foreground-muted text-xs font-bold">Email Address</label>
+                                <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full placeholder:text-xs border border-foreground-muted p-2 outline-0 bg-transparent" placeholder="letsgo@gmail.com" required />
+                            </div>
+                            <div className="flex flex-col">
+                                <div className="flex justify-between">
+                                    <label htmlFor="password" className="text-foreground-muted text-xs font-bold">Password</label>
+                                    {isLogin && (
+                                        <span
+                                            className="text-foreground-muted text-xs font-bold hover:text-foreground cursor-pointer"
+                                            onClick={() => setShowReset(true)}
+                                        >
+                                            Reset
+                                        </span>
+                                    )}
+                                </div>
+                                <input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••••" className="w-full placeholder:text-xs border border-foreground-muted p-2 outline-0 bg-transparent" required />
+                            </div>
+                            {!isLogin && (
+                                <div className="flex flex-col">
+                                    <label htmlFor="confirm" className="text-foreground-muted text-xs font-bold">Confirm Password</label>
+                                    <input id="confirm" type="password" value={confirm} onChange={e => setConfirm(e.target.value)} placeholder="••••••••••" className="w-full placeholder:text-xs border border-foreground-muted p-2 outline-0 bg-transparent" required />
+                                </div>
+                            )}
+                            {error && <p className="text-red-500 text-xs">{error}</p>}
+                            <button type="submit" className="w-full border border-foreground p-2 text-foreground cursor-pointer hover:bg-foreground-muted hover:text-background hover:font-bold hover:border-background transition-colors">
+                                {isLogin ? "Get Set Go" : "Initialize"}
+                            </button>
+                            <button type="button" onClick={() => signIn("google", { callbackUrl: "/dashboard" })} className="w-full border border-foreground-muted p-2 text-foreground-muted cursor-pointer hover:border-foreground hover:text-foreground transition-colors">
+                                Continue with Google
+                            </button>
+                        </form>
+                    </>
+                )}
 
-                                <div className="flex flex-col">
-                                    <div className="flex justify-between">
-                                        <label htmlFor="password" className="text-foreground-muted text-xs font-bold">Password</label>
-                                        {isLogin && <span className="text-foreground-muted text-xs font-bold hover:text-foreground cursor-pointer">Reset</span>}
-                                    </div>
-                                    <input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••••" className="w-full placeholder:text-xs border border-foreground-muted p-2 outline-0 bg-transparent" required />
-                                </div>
-                                {!isLogin && (
-                                    <div className="flex flex-col">
-                                        <label htmlFor="confirm" className="text-foreground-muted text-xs font-bold">Confirm Password</label>
-                                        <input id="confirm" type="password" value={confirm} onChange={e => setConfirm(e.target.value)} placeholder="••••••••••" className="w-full placeholder:text-xs border border-foreground-muted p-2 outline-0 bg-transparent" required />
-                                    </div>
-                                )}
-                                {error && <p className="text-red-500 text-xs">{error}</p>}
-                                <button type="submit" className="w-full border border-foreground p-2 text-foreground cursor-pointer hover:bg-foreground-muted hover:text-background hover:font-bold hover:border-background transition-colors">
-                                    {isLogin ? "Get Set Go" : "Initialize"}
-                                </button>
-                                <button type="button" onClick={() => signIn("google", { callbackUrl: "/dashboard" })} className="w-full border border-foreground-muted p-2 text-foreground-muted cursor-pointer hover:border-foreground hover:text-foreground transition-colors">
-                                    Continue with Google
-                                </button>
-                            </form></>)}
                 <hr className="border-foreground-muted" />
                 <p className="text-xs md:text-sm flex justify-center text-foreground-muted gap-1">
                     {isLogin ? "Unregistered entity?" : "Already registered?"}{" "}
@@ -115,6 +167,7 @@ export default function Registration() {
                     </span>
                 </p>
             </main>
+
             <footer className="text-foreground-muted text-xs">V1.3</footer>
         </div>
     )
