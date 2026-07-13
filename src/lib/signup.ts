@@ -33,7 +33,7 @@ export async function signUpUser(name: string, email: string, password: string) 
   if (error) return { error: error.message }
 
   const { data, error: sendError } = await resend.emails.send({
-    from: "LinkGuru <onboarding@resend.dev>",
+    from: "LinkGuru <verify@linkguru.pranavgg.me>",
     to: email,
     subject: "Verify your LinkGuru account",
     html: `
