@@ -2,18 +2,18 @@ import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function proxy(req: NextRequest) {
-    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET})
-    const {pathname} = req.nextUrl
+    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET })
+    const { pathname } = req.nextUrl
 
-    if(token && pathname === "/")
+    if (token && pathname === "/")
         return NextResponse.redirect(new URL("/dashboard", req.url))
 
-    if(!token && pathname === "/dashboard")
+    if (!token && pathname === "/dashboard")
         return NextResponse.redirect(new URL("/", req.url))
 
     return NextResponse.next()
 }
 
-export const config= {
+export const config = {
     matcher: ["/", "/dashboard/:path*"]
 }
