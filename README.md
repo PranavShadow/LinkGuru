@@ -211,5 +211,3 @@ src/
 ## Author
 
 Built by [PranavShadow](https://github.com/PranavShadow)
-
-..
